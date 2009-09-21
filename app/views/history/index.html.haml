@@ -1,0 +1,33 @@
+#queue
+  %h1 History
+
+
+#fullblock.content
+  %table.table
+    %thead.header
+      %tr
+        %th On
+        %th{:width => "200px"} What
+        %th Result
+        %th User
+        %th Actions
+    %tbody.items.evs
+      - @h.group_by{|h| h.created_at.hour }.each do |hour, evs|
+        - if hour != Time.now.hour
+          %tr
+            %td.group{:colspan => 5}
+              = image_tag "icons/alarm-clock.png"
+              = time_ago_in_words evs.first.created_at
+              (#{evs.count})
+        - for ev in evs
+          %tr
+            %td= link_to ev.host.name, ev.host
+            %td= link_to ev.name, ev
+            %td= ev.res
+            %td= ev.user
+            %td.actions
+              = link_to 'Delete', ev, :method => :delete
+              = link_to 'Redo', redo_ev_path(ev) , :method => :post
+
+= will_paginate(@h)
+

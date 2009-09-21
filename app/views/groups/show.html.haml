@@ -1,0 +1,11 @@
+%h1.heading
+  = "Group %s" % @group.id
+  
+- content_tag_for(:dl, @group) do
+  %dt.label= 'Name'
+  %dd.name= h @group.try(:name)
+  
+%p.actions
+  = link_to 'Edit', edit_group_path(@group)
+  |
+  = link_to 'Index', groups_path

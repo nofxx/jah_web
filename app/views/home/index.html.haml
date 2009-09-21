@@ -1,0 +1,21 @@
+- content_for :head do
+  = javascript_include_tag "flot", "excanvas", "home"
+
+#queue
+  #no_jobs.small_caps no jobs..
+
+
+#graphs
+  .graph_container
+    .graph_title Loading....
+
+
+- content_for :sidebar do
+  %p.action
+    = image_tag "icons/application-terminal.png"
+    = link_to 'Command', new_host_path
+
+
+
+#about
+  Jah v0.0.2 Beta (fireho).com

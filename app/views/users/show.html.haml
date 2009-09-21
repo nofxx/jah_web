@@ -1,0 +1,18 @@
+.block
+  %h2.title= @user.name
+  .content
+    .left
+      = show_for @user, [:login, :login_count, :city]
+    .right
+      %h3 Contatos
+      - for contact in @user.contacts
+        %p= contact.value
+      %h3 Regiões
+      - for region in @user.regions
+        %p= link_to region.name, region
+    .clear
+    = back_link
+    |
+    = link_to "Editar", edit_user_path(@user)
+    |
+    = link_to "Excluir", user_path(@user), :method => :delete, :confirm => "Apagar #{@user.name}?"

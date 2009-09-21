@@ -1,0 +1,16 @@
+#
+# Jah Default Config
+#
+default: &default
+  pub_key: ""
+  piv_key: ""
+  use_auth?: false
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+test:
+  <<: *default

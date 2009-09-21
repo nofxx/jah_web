@@ -1,0 +1,21 @@
+- semantic_form_for(@user, :html => {:class => "form"}) do |f|
+  .left
+    = f.input :login
+    = f.input :name
+    = f.input :email
+    = f.input :kind
+    = f.input :password, :input_html => { :size => 20 }
+    = f.input :password_confirmation, :input_html => { :size => 20 }
+  .right
+    = f.input :kind, :as => :select, :collection => User.get_kind_values
+
+    - f.inputs :name => "Keys", :id => "keys" do
+      = f.render_associated_form @user.keys, :partial => "keys/key"
+      = f.add_associated_link "+ New key", :keys, :partial => "keys/key"
+
+    - f.inputs :name => "Contatos", :id => "contacts" do
+      = f.render_associated_form @user.contacts, :partial => "contacts/contact"
+      = f.add_associated_link "+ New contact", :contacts, :partial => "contacts/contact"
+
+  .clear
+  = save_or_cancel(f)

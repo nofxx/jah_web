@@ -1,0 +1,34 @@
+!!! Transitional
+%head
+  %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "content-type" }/
+  %title Jah
+  = stylesheet_link_tag "reset", "app"
+  = javascript_include_tag "jquery", "sparkline"
+  = yield :head
+%body
+  #container
+    #header
+      #logo
+    #disconnected.small_caps{:style => "display:none;"}
+      .server_error
+      Disconnected...
+    - if sidebar = yield(:sidebar)
+      #sidebar
+        #sidebar_top.sidebar_back
+        #sidebar_background
+        #sidebar_bottom.sidebar_back
+        #sidebar_header.small_caps
+          %span.has_hosts Active
+          %span.no_hosts Inactive
+        #hosts= sidebar
+    #topmenu
+      = [["Jah", "/"], ["Hosts", "/hosts"], ["History", "/history"],["Groups", "/groups"], ["Users", "/users"], ["Config", "/config"]].map { |l|  link_to l[0], l[1] }
+    #queue= yield :queue
+    = yield
+    #host_info{:style => "display:none;"}
+      #host_info_inner.small_caps
+        #host_details
+        #host_sleeping
+    = yield :foot
+
+

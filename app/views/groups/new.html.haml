@@ -1,0 +1,11 @@
+%h1.heading
+  = 'New Group'
+
+#block.content
+  - semantic_form_for(@group) do |f|
+    = f.input :name
+    - f.buttons do
+      = f.commit_button 'Create'
+
+%p.actions
+  = link_to 'Cancel', groups_path

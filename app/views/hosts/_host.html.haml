@@ -1,0 +1,9 @@
+- semantic_form_for(@host, :html => {:class => "form" }) do |f|
+  = input(f.text_field(:name), 'Name')
+  = input(f.text_field(:addr), 'Addr')
+  = input(f.text_field(:port), 'Port')
+  = input(f.text_field(:user), 'User')
+  = input(f.text_field(:pass), 'Pass')
+  = input(f.text_area(:info), 'Info')
+  = f.input :groups
+  = f.submit 'Create'

@@ -1,0 +1,478 @@
+body
+  background: #979797
+  font-family: "Bitstream Vera Sans", verdana, sans-serif
+  font-size: 12px
+  color: #252525
+
+=hh(!size, !margin = 15px 0, !color = #555555)
+  margin = !margin
+  font-size = !size
+  color = !color
+  font-weight: normal
+
+h1
+  +hh(22px)
+h2
+  +hh(22px)
+h3
+  +hh(18px, 10px 0)
+h4
+  +hh(16px, 5px 0)
+
+a
+  text-decoration: none
+
+
+
+.small_caps
+  font: 11px Arial, sans-serif
+  text-transform: uppercase
+
+
+#header
+  height: 70px
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  background: url(/images/header_back.png)
+
+
+#logo
+  position: absolute
+  left: 0px
+  top: 5px
+  width: 120px
+  height: 64px
+  background: url(/images/logo.png)
+
+
+#disconnected
+  position: absolute
+  top: 78px
+  right: 15px
+  background: #7f7f7f
+  color: #333
+  border: 1px solid #555
+  font-size: 10px
+  line-height: 18px
+  padding: 3px 4px 1px 4px
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  border-radius: 5px
+  .server_error
+    float: left
+    width: 16px
+    height: 16px
+    background: url(/images/icons/server--exclamation.png)
+    opacity: 0.7
+    margin-right: 3px
+
+
+#topmenu
+  position: absolute
+  top: 12px
+  right: 20px
+  overflow: hidden
+  padding: 5px
+  a
+    font-size: 1.2em
+    color: #888
+    text-decoration: none
+    padding: 8px
+
+
+#block
+  position: absolute
+  padding: 8px
+  top: 80px
+  left: 270px
+  right: 10px
+  bottom: 10px
+  overflow: hidden
+  overflow-y: auto
+
+
+#fullblock
+  position: absolute
+  padding: 8px
+  top: 80px
+  left: 8px
+  right: 8px
+  bottom: 8px
+
+
+.content
+  background-color: #e0e0e0
+  padding: 5px 5px 5px 15px
+  -moz-border-radius: 4px
+  -webkit-border--radius: 4px
+
+.table
+  width: 100%
+  border-collapse: collapse
+  margin-bottom: 15px
+  th
+    color: #888
+    padding: 8px
+    font-size: 14px
+    text-align: left
+    text-shadow: 0px 1px 1px #eee
+    margin-bottom: 10px
+    padding-left: 10px
+    &.first
+      width: 30px
+    &.last
+      width: 200px
+  td
+    padding: 10px
+    border-bottom: 1px solid #ccc
+    a
+      color: #555
+      font-weight: bold
+    &.last
+      text-align: right
+    &.group
+      background-color: #ccc
+    &.actions
+      font-size: 1.1em
+      font-weight: bold
+      a
+        color: #777
+      a
+        &.kill
+          color: #661111
+  .checkbox
+    margin-left: 10px
+
+
+#queue
+  position: absolute
+  top: 8px
+  left: 110px
+  height: 77px
+  overflow: hidden
+
+#no_jobs
+  text-align: left
+  position: absolute
+  bottom: 8px
+  right: 8px
+  color: #999
+  display: none
+
+
+#queue.no_jobs #no_jobs
+  display: block
+
+#queue_fill
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  height: 75px
+  border: 1px solid #5c5c5c
+  -moz-border-radius: 10px
+  -webkit-border-radius: 10px
+  border-radius: 10px
+  background: transparent url(/images/queue_fill.png) repeat-x 0px -1px
+
+
+#queue
+  &.no_jobs #queue_fill
+    opacity: 0.3
+  .job
+    position: relative
+    margin-top: 1px
+    height: 75px
+    background: blue
+    float: left
+    overflow: hidden
+    -moz-border-radius: 10px
+    -webkit-border-radius: 10px
+  .completion
+    position: absolute
+    bottom: -1px
+    height: 30px
+    background: black
+    border: 1px solid white
+    -moz-border-radius: 10px
+    -webkit-border-radius: 10px
+    opacity: 0.5
+    overflow: hidden
+    &.zero
+      border: 0
+  .percent_complete
+    position: absolute
+    bottom: 8px
+    left: 8px
+    color: #c7c7c7
+    z-index: 10
+  .job_id
+    color: #333
+    font-size: 14px
+    position: absolute
+    top: 8px
+    left: 8px
+    z-index: 10
+
+
+#sidebar
+  position: absolute
+  top: 80px
+  left: 8px
+  bottom: 10px
+  width: 250px
+  overflow: hidden
+
+
+#sidebar_background
+  position: absolute
+  top: 21px
+  bottom: 21px
+  width: 248px
+  background: #e0e0e0
+  border: 1px solid #8b8b8b
+  border-top: 0
+  border-bottom: 0
+
+
+.sidebar_back
+  position: absolute
+  height: 21px
+  width: 250px
+
+#sidebar_top
+  top: 0px
+  background: url(/images/sidebar_top.png)
+
+#sidebar_bottom
+  bottom: 0px
+  background: url(/images/sidebar_bottom.png)
+
+#sidebar_header
+  position: absolute
+  top: 5px
+  left: 8px
+  color: #404040
+  text-shadow: 0px 1px 1px #eee
+  &.no_hosts .no_hosts, .has_hosts
+    display: block
+  .no_hosts, &.no_hosts .has_hosts
+    display: none
+
+
+#hosts
+  position: absolute
+  padding: 2px 5px
+  top: 21px
+  left: 0
+  bottom: 21px
+  width: 240px
+  overflow-y: auto
+  overflow-x: hidden
+  .action
+    margin-top: 10px
+    a
+      border: 1px solid transparent
+      margin: 5px 5px
+      text-decoration: none
+      padding-left: 18px
+      font-size: 14px
+      line-height: 22px
+      cursor: pointer
+  img
+    border: none
+    float: left
+    margin: 4px 2px 2px 10px
+  .host
+    border: 1px solid transparent
+    margin: 1px 7px
+    padding-left: 18px
+    font-size: 11px
+    line-height: 22px
+    background: url(/images/bullet_white.png) no-repeat left center
+    cursor: pointer
+    &.processing, &.splitting, &.merging
+      background: url(/images/bullet_green.png) no-repeat left center
+    &:hover
+      border: 1px solid #aaa
+      border-radius: 4px
+      -moz-border-radius: 4px
+      -webkit-border-radius: 4px
+      background-color: #ccc
+  .action:hover
+    border: 1px solid #aaa
+    border-radius: 4px
+    -moz-border-radius: 4px
+    -webkit-border-radius: 4px
+    background-color: #ccc
+
+#host_info
+  position: absolute
+  width: 231px
+  height: 79px
+  margin: -9px 0 0 -20px
+  background: url(/images/host_info.png)
+  overflow: hidden
+  cursor: pointer
+
+#host_info_inner
+  margin: 15px 15px 15px 32px
+  line-height: 15px
+  color: #333
+  text-shadow: 0px 1px 1px #eee
+
+#host_info
+  &.loading #host_info_inner
+    background: url(/images/host_info_loading.gif) no-repeat right bottom
+    width: 45px
+    height: 9px
+
+  &.awake #host_details
+    display: block
+
+#host_sleeping
+  display: block
+
+#host_details
+  display: none
+
+#host_info
+  &.loading
+    #host_details, #host_sleeping
+      display: none
+
+  &.awake #host_sleeping
+    display: none
+
+
+#graphs
+  position: absolute
+  padding: 17px 15px 15px 17px
+  top: 70px
+  left: 270px
+  right: 0px
+  bottom: 0
+  overflow: hidden
+  overflow-y: auto
+
+.graph_container
+  margin-bottom: 25px
+
+.graph_title
+  color: #333
+  font-size: 16px
+  text-shadow: 0px 1px 1px #eee
+  margin-bottom: 10px
+
+.graph
+  height: 180px
+
+
+.form
+  li
+    display: inline
+  label, input, textarea
+    margin: 0
+  label
+    font-size: 1.0em
+    display: block
+    padding-top: 8px
+    &.checkbox, &.radio
+      line-height: 1.5em
+  input
+    &[type=text], &[type=password]
+      width: 100%
+    &[type=button]
+      width: 90px !important
+      background: #EEE
+      color: #262626
+      padding: 2px 5px
+      border: 1px solid #262626
+      cursor: pointer
+    &.checkbox, &.radio
+      margin-right: 5px
+    .checkbox
+      vertical-align: middle
+      margin: 0
+      padding: 0
+  .description
+    font-style: italic
+    color: #8C8C8C
+    font-size: .9em
+  fieldset
+    padding: 3px 5px
+    .inputs
+      margin: 3px 0
+      border: 1px solid #ccc
+  textarea
+    width: 100%
+    background-color: white
+    color: #444
+    -moz-border-radius: 3px
+    -webkit-border-radius: 3px
+    font-size: 1.5em
+  .navform
+    background-color: #f1f8f8
+    margin: 10px 0 0 0
+    padding: 10px 10px 10px 20px
+    background-color: #E6FAFA
+    -moz-border-radius: 9px
+    -webkit-border-radius: 9px
+    a
+      margin: 5px
+      color: #444
+    button, input
+      margin: 5px
+      font-size: 1.4em
+      color: #008800
+
+
+.commands
+  background-color: #ccc
+  font-size: 1.2em
+  padding: 5px
+  height: 25px
+  a
+    color: #333
+    font-weight: bold
+
+.shell
+  font-size: 14px
+  font-family: Courier
+  color: #33EE33
+  background-color: #222
+  padding: 20px
+  white-space: nowrap
+  overflow: auto
+  padding-top: 8px
+
+
+pre.code
+  background-color: #F7F9FA
+
+pre.key
+  width: 45%
+
+div.content pre
+  font-family: Courier
+  border: 1px dashed #C4C4C4
+  color: #666666
+  font-size: 120%
+  overflow: auto
+  padding: 0.5em
+
+
+#about
+  position: absolute
+  padding: 5px
+  right: 15px
+  bottom: 15px
+
+
+.to_left
+  float: left
+
+.to_right
+  float: right

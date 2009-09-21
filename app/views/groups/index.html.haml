@@ -1,0 +1,25 @@
+#queue
+  %h1.heading
+    = "Groups"
+
+- content_for :sidebar do
+  %p.action
+    = image_tag "icons/servers--plus.png"
+    = link_to 'New Group', new_group_path
+
+
+#block.content
+  %table.table
+    %thead.header
+      %tr
+        %th Name
+        %th Hosts
+    %tbody.items.groups
+      - for group in @groups
+        %tr
+          %td= link_to group.name, group
+          %td= group.hosts.count
+
+
+
+  = will_paginate(@groups)

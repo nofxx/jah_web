@@ -1,0 +1,12 @@
+%h1.heading
+  = "Ev %s" % @ev.id
+
+#fullblock
+  %h2 #{@ev.try(:comm)}  (#{@ev.time_taken}s)
+  .shell
+    %pre=  @ev.try(:result)
+
+%p.evions
+  = link_to 'Edit', edit_ev_path(@ev)
+  |
+  = link_to 'Index', evs_path

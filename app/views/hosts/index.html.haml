@@ -1,0 +1,48 @@
+
+- content_for :queue do
+  %h1.heading= "Hosts"
+
+
+#block.content
+
+  %table.table
+    %thead.header
+      %tr
+        %th Name
+        %th Stat
+        %th State
+        %th Actions
+    %tbody.items.hosts
+      - @hosts.group_by(&:active).each do |active, hosts|
+        - unless active
+          %tr
+            %td.group{:colspan => 5}
+              Inactive
+        - for host in hosts
+          %tr
+            %td= link_to host.name, host
+            %td
+              %p
+                %div{:id => "compositebar#{host.id}"} Loading...
+            %td= host.active
+            %td.actions= link_to "Switch", switch_host_path(host), :method => :put
+
+
+- content_for :sidebar do
+  %p.action
+    = image_tag "icons/server--plus.png"
+    = link_to 'New Host', new_host_path
+  %p.action
+    = image_tag "icons/application-terminal.png"
+    =# link_to 'Command', host
+
+  //= will_paginate(@hosts)
+
+
+- content_for :foot do
+  - @hosts.each do |host|
+    :javascript
+      $(function() {
+      $('#compositebar#{host.id}').sparkline([#{host.graph_for(:mem, true).join(",")}], {height: '1.3em', type: 'bar', barSpacing: 1, barWidth: 4, barColor: '#bbb'});
+      $('#compositebar#{host.id}').sparkline([#{host.graph_for(:cpu, true).join(",")}], {composite: true, height: '1.3em', fillColor:false, lineColor: '#dd0000'});
+      });

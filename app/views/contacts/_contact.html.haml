@@ -1,0 +1,6 @@
+.contact
+  = f.input :kind, :as => :select, :collection => Contact.get_kind_values, :label => false
+  = f.input :value, :input_html => { :size => 10 }, :label => false
+  Info:
+  = f.text_field :info, :size => 15
+  = f.remove_link "", :class => "icon delete"

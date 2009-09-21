@@ -1,0 +1,67 @@
+#queue
+  %h1.heading
+    = "Host #{(@host.name || @host.id)}"
+
+#block.content
+  .commands
+    .to_right CPU: #{@host.cpu}% | RAM: #{@host.mem}%
+    .to_left
+      = link_to 'Ping', ping_host_path(@host), :method => :post
+      |
+      = link_to "Wipe", wipe_host_path(@host), :method => :put
+
+  - if proks = @host.last_stat.try(:proks)
+    Procs: #{proks.count}
+    %table.table
+      %thead.header
+        %tr
+          %th PID
+          %th CPU
+          %th MEM
+          %th COMM
+          %th Actions
+      %tbody.items.hosts
+        - for prok in proks.sort{ |al, bl| bl.mem <=> al.mem }.sort{ |a, b| b.cpu <=> a.cpu }
+          %tr
+            %td= prok.pid
+            %td= prok.cpu
+            %td= prok.mem
+            %td= prok.comm
+            %td.actions
+              = link_to "Hup", host_prok_path(@host, prok.pid), :method => :delete
+              = link_to "Kill", host_prok_path(@host, prok.pid), :method => :delete, :class => "kill"
+
+  %table.table
+    %thead.header
+      %tr
+        %th CPU
+        %th MEM
+        %th NET
+        %th DISK
+    %tbody.items.hosts
+      - for stat in @host.stats.ordered.last_ones
+        %tr
+          %td= stat.cpu
+          %td= stat.mem
+          %td= stat.net
+          %td
+            - for disk in stat.disks
+              %p #{disk[4]} => #{disk[5]}
+
+
+  %p.actions
+    = link_to 'Edit', edit_host_path(@host)
+    |
+    = link_to 'Delete', @host, :method => :delete
+    |
+    = link_to 'Index', hosts_path
+
+  API key:
+  = @host.key
+
+- content_for :sidebar do
+  = @host.addr
+  - semantic_form_for @host.evs.build do |f|
+    = f.hidden_field :host_id, :value => @host.id
+    = f.text_area :comm, :size => "31x5"
+    = f.submit "Exec!"
